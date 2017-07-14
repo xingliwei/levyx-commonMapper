@@ -22,7 +22,7 @@
 
         <!--数据库连接所需的属性，每一个<context>都必须有一个<jdbcConnection>元素-->
         <jdbcConnection driverClass="com.mysql.jdbc.Driver"
-                        connectionURL="jdbc:mysql://localhost:3307/levyx_common_templete" userId="levyx_common" password="levyx">
+                        connectionURL="jdbc:mysql://localhost:3306/levyx_common_templete" userId="levyx_common" password="levyx">
         </jdbcConnection>
 
         <javaTypeResolver>
