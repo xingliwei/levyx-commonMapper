@@ -23,6 +23,7 @@ CREATE TABLE `base_student` (
   `id` varchar(64) NOT NULL,
   `name` varchar(64) DEFAULT NULL,
   `age` int(11) DEFAULT NULL,
+  `birth` datetime DEFAULT NULL,
   `gender` int(11) DEFAULT NULL,
   `hobby` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`)

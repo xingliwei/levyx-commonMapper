@@ -1,11 +1,15 @@
 package com.xlw.levyx.mapper.model;
 
+import java.util.Date;
+
 public class BaseStudent {
     private String id;
 
     private String name;
 
     private Integer age;
+
+    private Date birth;
 
     private Integer gender;
 
@@ -33,6 +37,14 @@ public class BaseStudent {
 
     public void setAge(Integer age) {
         this.age = age;
+    }
+
+    public Date getBirth() {
+        return birth;
+    }
+
+    public void setBirth(Date birth) {
+        this.birth = birth;
     }
 
     public Integer getGender() {
