@@ -143,6 +143,13 @@
             <columnOverride column="id" javaType="Long"/>
         </table>
 
+        <table schema="levyx_common_templete" tableName="base_student">
+        </table>
+        <table schema="levyx_common_templete" tableName="student_score">
+        </table>
+        <table schema="levyx_common_templete" tableName="student_subject">
+        </table>
+
     </context>
 
 </generatorConfiguration>
