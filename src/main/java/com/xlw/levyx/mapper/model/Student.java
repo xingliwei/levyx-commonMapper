@@ -2,7 +2,7 @@ package com.xlw.levyx.mapper.model;
 
 import java.util.Date;
 
-public class BaseStudent {
+public class Student {
     private String id;
 
     private String name;

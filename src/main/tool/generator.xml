@@ -14,6 +14,9 @@
     不同的数据库或者使用不同的生成生成器参数生成对象。-->
     <context id="Tables" targetRuntime="MyBatis3" >
 
+        <!-- MGB的插件，这个类被加入到了jar包里 -->
+        <plugin type="com.xlw.levyx.mapper.plugin.MyPaginationPlugin"/>
+
         <!--commentGenerator元素用来定义注释生成器的属性-->
         <commentGenerator>
             <!--当这个属性是true时，不会往生成的元素中添加任何注释-->
@@ -143,11 +146,11 @@
             <columnOverride column="id" javaType="Long"/>
         </table>
 
-        <table schema="levyx_common_templete" tableName="base_student">
+        <table schema="levyx_common_templete" tableName="base_student" domainObjectName="Student">
         </table>
-        <table schema="levyx_common_templete" tableName="student_score">
+        <table schema="levyx_common_templete" tableName="student_score" domainObjectName="StudentScore">
         </table>
-        <table schema="levyx_common_templete" tableName="student_subject">
+        <table schema="levyx_common_templete" tableName="student_subject" domainObjectName="StudentSubject">
         </table>
 
     </context>

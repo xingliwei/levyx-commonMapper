@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.xlw.levyx.mapper.client.BaseStudentMapper" >
-  <resultMap id="BaseResultMap" type="com.xlw.levyx.mapper.model.BaseStudent" >
+<mapper namespace="com.xlw.levyx.mapper.client.StudentMapper" >
+  <resultMap id="BaseResultMap" type="com.xlw.levyx.mapper.model.Student" >
     <id column="id" property="id" jdbcType="VARCHAR" />
     <result column="name" property="name" jdbcType="VARCHAR" />
     <result column="age" property="age" jdbcType="INTEGER" />
@@ -70,7 +70,7 @@
   <sql id="Base_Column_List" >
     id, name, age, birth, gender, hobby
   </sql>
-  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.xlw.levyx.mapper.model.BaseStudentExample" >
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.xlw.levyx.mapper.model.StudentExample" >
     select
     <if test="distinct" >
       distinct
@@ -83,6 +83,9 @@
     <if test="orderByClause != null" >
       order by ${orderByClause}
     </if>
+    <if test="limitStart != null and limitStart >= 0" >
+      limit #{limitStart}, #{limitEnd}
+    </if>
   </select>
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
     select 
@@ -94,13 +97,13 @@
     delete from base_student
     where id = #{id,jdbcType=VARCHAR}
   </delete>
-  <delete id="deleteByExample" parameterType="com.xlw.levyx.mapper.model.BaseStudentExample" >
+  <delete id="deleteByExample" parameterType="com.xlw.levyx.mapper.model.StudentExample" >
     delete from base_student
     <if test="_parameter != null" >
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" parameterType="com.xlw.levyx.mapper.model.BaseStudent" >
+  <insert id="insert" parameterType="com.xlw.levyx.mapper.model.Student" >
     insert into base_student (id, name, age, 
       birth, gender, hobby
       )
@@ -108,7 +111,7 @@
       #{birth,jdbcType=TIMESTAMP}, #{gender,jdbcType=INTEGER}, #{hobby,jdbcType=VARCHAR}
       )
   </insert>
-  <insert id="insertSelective" parameterType="com.xlw.levyx.mapper.model.BaseStudent" >
+  <insert id="insertSelective" parameterType="com.xlw.levyx.mapper.model.Student" >
     insert into base_student
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="id != null" >
@@ -151,7 +154,7 @@
       </if>
     </trim>
   </insert>
-  <select id="countByExample" parameterType="com.xlw.levyx.mapper.model.BaseStudentExample" resultType="java.lang.Integer" >
+  <select id="countByExample" parameterType="com.xlw.levyx.mapper.model.StudentExample" resultType="java.lang.Integer" >
     select count(*) from base_student
     <if test="_parameter != null" >
       <include refid="Example_Where_Clause" />
@@ -195,7 +198,7 @@
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
-  <update id="updateByPrimaryKeySelective" parameterType="com.xlw.levyx.mapper.model.BaseStudent" >
+  <update id="updateByPrimaryKeySelective" parameterType="com.xlw.levyx.mapper.model.Student" >
     update base_student
     <set >
       <if test="name != null" >
@@ -216,7 +219,7 @@
     </set>
     where id = #{id,jdbcType=VARCHAR}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.xlw.levyx.mapper.model.BaseStudent" >
+  <update id="updateByPrimaryKey" parameterType="com.xlw.levyx.mapper.model.Student" >
     update base_student
     set name = #{name,jdbcType=VARCHAR},
       age = #{age,jdbcType=INTEGER},

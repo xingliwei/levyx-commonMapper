@@ -81,6 +81,9 @@
     <if test="orderByClause != null" >
       order by ${orderByClause}
     </if>
+    <if test="limitStart != null and limitStart >= 0" >
+      limit #{limitStart}, #{limitEnd}
+    </if>
   </select>
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
     select 
@@ -98,14 +101,13 @@
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" parameterType="com.xlw.levyx.mapper.model.StudentScore" keyProperty="id">
+  <insert id="insert" parameterType="com.xlw.levyx.mapper.model.StudentScore" >
     insert into student_score (id, student_id, socre, 
       subject_id)
     values (#{id,jdbcType=INTEGER}, #{studentId,jdbcType=VARCHAR}, #{socre,jdbcType=INTEGER}, 
       #{subjectId,jdbcType=VARCHAR})
   </insert>
-  <!-- 这个keyProperty在数据库主键为自增时设置，设置这个属性之后mybatis会在插入操作之后将自增的主键设置到对象中 -->
-  <insert id="insertSelective" parameterType="com.xlw.levyx.mapper.model.StudentScore" keyProperty="id">
+  <insert id="insertSelective" parameterType="com.xlw.levyx.mapper.model.StudentScore" >
     insert into student_score
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="id != null" >
